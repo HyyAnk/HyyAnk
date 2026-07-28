@@ -46,40 +46,41 @@
       animation-iteration-count: infinite;
       will-change: transform;
     }
-    .b01 { animation-name: beat-a; animation-duration: .9375s; animation-delay: -.18s; }
-    .b02 { animation-name: beat-f; animation-duration: 1.171875s; animation-delay: -.81s; }
-    .b03 { animation-name: beat-c; animation-duration: .703125s; animation-delay: -.29s; }
-    .b04 { animation-name: beat-h; animation-duration: 1.40625s; animation-delay: -1.07s; }
-    .b05 { animation-name: beat-d; animation-duration: .8203125s; animation-delay: -.52s; }
-    .b06 { animation-name: beat-b; animation-duration: 1.0546875s; animation-delay: -.11s; }
-    .b07 { animation-name: beat-g; animation-duration: 1.2890625s; animation-delay: -.94s; }
-    .b08 { animation-name: beat-e; animation-duration: .9375s; animation-delay: -.63s; }
-    .b09 { animation-name: beat-a; animation-duration: 1.171875s; animation-delay: -.37s; }
-    .b10 { animation-name: beat-c; animation-duration: .8203125s; animation-delay: -.74s; }
-    .b11 { animation-name: beat-f; animation-duration: 1.40625s; animation-delay: -.23s; }
-    .b12 { animation-name: beat-d; animation-duration: .703125s; animation-delay: -.48s; }
-    .b13 { animation-name: beat-h; animation-duration: 1.0546875s; animation-delay: -.91s; }
-    .b14 { animation-name: beat-b; animation-duration: 1.2890625s; animation-delay: -.32s; }
-    .b15 { animation-name: beat-e; animation-duration: .9375s; animation-delay: -.86s; }
-    .b16 { animation-name: beat-g; animation-duration: 1.171875s; animation-delay: -.14s; }
-    .b17 { animation-name: beat-c; animation-duration: 1.40625s; animation-delay: -1.19s; }
-    .b18 { animation-name: beat-a; animation-duration: .8203125s; animation-delay: -.41s; }
-    .b19 { animation-name: beat-f; animation-duration: 1.0546875s; animation-delay: -.69s; }
-    .b20 { animation-name: beat-d; animation-duration: .703125s; animation-delay: -.17s; }
-    .b21 { animation-name: beat-b; animation-duration: 1.2890625s; animation-delay: -1.02s; }
-    .b22 { animation-name: beat-h; animation-duration: .9375s; animation-delay: -.57s; }
-    .b23 { animation-name: beat-e; animation-duration: 1.171875s; animation-delay: -.27s; }
-    .b24 { animation-name: beat-g; animation-duration: .8203125s; animation-delay: -.72s; }
-    .b25 { animation-name: beat-a; animation-duration: 1.40625s; animation-delay: -.46s; }
-    .b26 { animation-name: beat-f; animation-duration: 1.0546875s; animation-delay: -.89s; }
-    .b27 { animation-name: beat-d; animation-duration: .703125s; animation-delay: -.34s; }
-    .b28 { animation-name: beat-c; animation-duration: 1.2890625s; animation-delay: -1.11s; }
-    .b29 { animation-name: beat-h; animation-duration: .9375s; animation-delay: -.21s; }
-    .b30 { animation-name: beat-b; animation-duration: 1.171875s; animation-delay: -.76s; }
-    .b31 { animation-name: beat-g; animation-duration: .8203125s; animation-delay: -.38s; }
-    .b32 { animation-name: beat-e; animation-duration: 1.40625s; animation-delay: -.97s; }
-    .b33 { animation-name: beat-f; animation-duration: 1.0546875s; animation-delay: -.55s; }
-    .b34 { animation-name: beat-a; animation-duration: .703125s; animation-delay: -.08s; }
+    /* 128 BPM remains the metadata reference; the visual field runs at half-speed for a calmer read. */
+    .b01 { animation-name: beat-a; animation-duration: 1.875s; animation-delay: -.36s; }
+    .b02 { animation-name: beat-f; animation-duration: 2.34375s; animation-delay: -1.62s; }
+    .b03 { animation-name: beat-c; animation-duration: 1.40625s; animation-delay: -.58s; }
+    .b04 { animation-name: beat-h; animation-duration: 2.8125s; animation-delay: -2.14s; }
+    .b05 { animation-name: beat-d; animation-duration: 1.640625s; animation-delay: -1.04s; }
+    .b06 { animation-name: beat-b; animation-duration: 2.109375s; animation-delay: -.22s; }
+    .b07 { animation-name: beat-g; animation-duration: 2.578125s; animation-delay: -1.88s; }
+    .b08 { animation-name: beat-e; animation-duration: 1.875s; animation-delay: -1.26s; }
+    .b09 { animation-name: beat-a; animation-duration: 2.34375s; animation-delay: -.74s; }
+    .b10 { animation-name: beat-c; animation-duration: 1.640625s; animation-delay: -1.48s; }
+    .b11 { animation-name: beat-f; animation-duration: 2.8125s; animation-delay: -.46s; }
+    .b12 { animation-name: beat-d; animation-duration: 1.40625s; animation-delay: -.96s; }
+    .b13 { animation-name: beat-h; animation-duration: 2.109375s; animation-delay: -1.82s; }
+    .b14 { animation-name: beat-b; animation-duration: 2.578125s; animation-delay: -.64s; }
+    .b15 { animation-name: beat-e; animation-duration: 1.875s; animation-delay: -1.72s; }
+    .b16 { animation-name: beat-g; animation-duration: 2.34375s; animation-delay: -.28s; }
+    .b17 { animation-name: beat-c; animation-duration: 2.8125s; animation-delay: -2.38s; }
+    .b18 { animation-name: beat-a; animation-duration: 1.640625s; animation-delay: -.82s; }
+    .b19 { animation-name: beat-f; animation-duration: 2.109375s; animation-delay: -1.38s; }
+    .b20 { animation-name: beat-d; animation-duration: 1.40625s; animation-delay: -.34s; }
+    .b21 { animation-name: beat-b; animation-duration: 2.578125s; animation-delay: -2.04s; }
+    .b22 { animation-name: beat-h; animation-duration: 1.875s; animation-delay: -1.14s; }
+    .b23 { animation-name: beat-e; animation-duration: 2.34375s; animation-delay: -.54s; }
+    .b24 { animation-name: beat-g; animation-duration: 1.640625s; animation-delay: -1.44s; }
+    .b25 { animation-name: beat-a; animation-duration: 2.8125s; animation-delay: -.92s; }
+    .b26 { animation-name: beat-f; animation-duration: 2.109375s; animation-delay: -1.78s; }
+    .b27 { animation-name: beat-d; animation-duration: 1.40625s; animation-delay: -.68s; }
+    .b28 { animation-name: beat-c; animation-duration: 2.578125s; animation-delay: -2.22s; }
+    .b29 { animation-name: beat-h; animation-duration: 1.875s; animation-delay: -.42s; }
+    .b30 { animation-name: beat-b; animation-duration: 2.34375s; animation-delay: -1.52s; }
+    .b31 { animation-name: beat-g; animation-duration: 1.640625s; animation-delay: -.76s; }
+    .b32 { animation-name: beat-e; animation-duration: 2.8125s; animation-delay: -1.94s; }
+    .b33 { animation-name: beat-f; animation-duration: 2.109375s; animation-delay: -1.10s; }
+    .b34 { animation-name: beat-a; animation-duration: 1.40625s; animation-delay: -.16s; }
 
     @keyframes beat-a { 0% { transform: scaleY(.18) } 16% { transform: scaleY(.72) } 31% { transform: scaleY(.34) } 57% { transform: scaleY(.96) } 76% { transform: scaleY(.43) } 100% { transform: scaleY(.61) } }
     @keyframes beat-b { 0% { transform: scaleY(.52) } 13% { transform: scaleY(.22) } 39% { transform: scaleY(.88) } 58% { transform: scaleY(.47) } 84% { transform: scaleY(1) } 100% { transform: scaleY(.35) } }
@@ -93,9 +94,9 @@
     @keyframes orbit-reverse { to { transform: rotate(-360deg) } }
     @keyframes scan { 0%, 100% { transform: translateY(-18px); opacity: 0 } 15%, 75% { opacity: .55 } 90% { transform: translateY(190px); opacity: 0 } }
     .orbit-a, .orbit-b { transform-box: fill-box; transform-origin: 50% 50%; }
-    .orbit-a { animation: orbit 10s linear infinite; }
-    .orbit-b { animation: orbit-reverse 7s linear infinite; }
-    .scan { animation: scan 4.5s ease-in-out infinite; }
+    .orbit-a { animation: orbit 18s linear infinite; }
+    .orbit-b { animation: orbit-reverse 13s linear infinite; }
+    .scan { animation: scan 8s ease-in-out infinite; }
 
     @media (prefers-reduced-motion: reduce) {
       .bar { animation: none !important; transform: scaleY(.58); }
