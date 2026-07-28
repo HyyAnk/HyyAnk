@@ -14,7 +14,7 @@
 
 ## I design systems that move.
 
-I am Hoàng Anh, a designer and maker working across product interfaces, visual systems, creative tools, and high-fidelity prototypes. I use code to push ideas beyond static frames and test how a design behaves in the real world.
+I am Hoàng [Anh], a designer and maker working across product interfaces, visual systems, creative tools, and high-fidelity prototypes. I use code to push ideas beyond static frames and test how a design behaves in the real world.
 
 ```text
 PRODUCT THINKING  +  VISUAL DIRECTION  +  INTERACTION  +  PROTOTYPING
