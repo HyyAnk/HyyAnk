@@ -102,6 +102,10 @@ I am most interested in creative tools, AI-assisted media workflows, browser-nat
 
 <br>
 
+<img src="./assets/hyyank-terminal.gif" width="100%" alt="Animated terminal typing npx create-HyyAnk-design" />
+
+<br>
+
 ## Contributions in motion
 
 <img src="https://raw.githubusercontent.com/HyyAnk/HyyAnk/output/github-contribution-grid-snake.svg" width="100%" alt="Animated contribution graph" />

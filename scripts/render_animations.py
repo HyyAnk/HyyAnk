@@ -265,6 +265,76 @@ def render_process(frame: int, total: int, width: int = 1200, height: int = 266)
     return image
 
 
+def render_terminal(frame: int, total: int, width: int = 1200, height: int = 400) -> Image.Image:
+    image = Image.new("RGB", (width, height), BG)
+    draw = ImageDraw.Draw(image)
+    draw_grid(draw, width, height, spacing=92)
+
+    card = (92, 42, 1108, 350)
+    header_height = 72
+    draw.rounded_rectangle(card, radius=18, fill=(33, 33, 33), outline=(101, 108, 104), width=2)
+    draw.rounded_rectangle(
+        (112, 62, 1088, 330),
+        radius=12,
+        fill=(5, 7, 7),
+        outline=(73, 80, 76),
+        width=1,
+    )
+    draw.rectangle((113, 63, 1087, 63 + header_height), fill=(28, 32, 31))
+    draw.line((113, 63 + header_height, 1087, 63 + header_height), fill=(65, 74, 69), width=1)
+
+    title_font = font(FONT_MONO, 25)
+    command_font = font(FONT_MONO, 36)
+    meta_font = font(FONT_MONO, 15)
+
+    icon_x, icon_y = 143, 88
+    draw.rounded_rectangle((icon_x, icon_y, icon_x + 28, icon_y + 28), radius=4, outline=COBALT, width=2)
+    draw.line((icon_x + 7, icon_y + 9, icon_x + 13, icon_y + 14), fill=LIME, width=2)
+    draw.line((icon_x + 13, icon_y + 14, icon_x + 7, icon_y + 19), fill=LIME, width=2)
+    draw.line((icon_x + 16, icon_y + 20, icon_x + 22, icon_y + 20), fill=PAPER, width=2)
+    draw.text((187, 88), "Terminal", fill=MUTED, font=title_font)
+
+    copy_box = (1017, 81, 1063, 120)
+    draw.rounded_rectangle(copy_box, radius=7, fill=(35, 40, 38), outline=(120, 128, 123), width=1)
+    draw.rounded_rectangle((1030, 90, 1044, 105), radius=2, outline=MUTED, width=2)
+    draw.rounded_rectangle((1036, 96, 1050, 111), radius=2, outline=LIME, width=2)
+
+    command = "npx create-HyyAnk-design"
+    type_start = 8
+    type_end = 43
+    hold_end = 55
+    if frame < type_start:
+        visible_count = 0
+    elif frame <= type_end:
+        progress = (frame - type_start) / max(1, type_end - type_start)
+        visible_count = min(len(command), 1 + int(progress * len(command)))
+    elif frame <= hold_end:
+        visible_count = len(command)
+    else:
+        erase_progress = (frame - hold_end) / max(1, total - hold_end - 1)
+        visible_count = max(0, len(command) - int(erase_progress * len(command)))
+
+    prompt_x, command_y = 155, 218
+    draw.text((prompt_x, command_y), "~", fill=COBALT, font=command_font, anchor="lm")
+    command_x = 202
+    visible = command[:visible_count]
+    first_token = visible[: min(3, len(visible))]
+    rest = visible[3:] if len(visible) > 3 else ""
+    draw.text((command_x, command_y), first_token, fill=LIME, font=command_font, anchor="lm")
+    first_width = draw.textlength(first_token, font=command_font)
+    draw.text((command_x + first_width, command_y), rest, fill=PAPER, font=command_font, anchor="lm")
+    typed_width = draw.textlength(visible, font=command_font)
+
+    cursor_visible = (frame // 4) % 2 == 0 or (type_start <= frame <= type_end)
+    if cursor_visible:
+        cursor_x = command_x + typed_width + 5
+        draw.rectangle((cursor_x, command_y - 23, cursor_x + 4, command_y + 24), fill=LIME)
+
+    draw.text((155, 293), "DESIGN SYSTEM INITIALIZER", fill=(118, 126, 121), font=meta_font)
+    draw.text((861, 293), "HYYANK / LOCAL", fill=(118, 126, 121), font=meta_font)
+    return image
+
+
 def save_gif(frames: list[Image.Image], path: Path, duration: int) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     quantized = [frame.quantize(colors=64, method=Image.Quantize.MEDIANCUT) for frame in frames]
@@ -298,7 +368,7 @@ def main() -> int:
 
     log(
         "INFO",
-        "Starting animation render | config=1200px canvas, 48 frames, 10fps | profiles=1 | mode=local-render | concurrency=1 | automation=Pillow-code-renderer-no-OS-input",
+        "Starting animation render | config=1200px canvas, 48-64 frames, 10fps | profiles=1 | mode=local-render | concurrency=1 | automation=Pillow-code-renderer-no-OS-input",
         step="startup",
     )
     if args.debug:
@@ -314,6 +384,7 @@ def main() -> int:
         ) as progress:
             render_asset("hero-wordmark", 48, render_hero, args.output_dir / "hyyank-hero.gif", progress)
             render_asset("design-process", 48, render_process, args.output_dir / "design-process.gif", progress)
+            render_asset("terminal-typing", 64, render_terminal, args.output_dir / "hyyank-terminal.gif", progress)
     except Exception as exc:
         log(
             "ERROR",
@@ -326,7 +397,7 @@ def main() -> int:
     elapsed = time.perf_counter() - started
     log(
         "DONE",
-        f"Final summary | total=2 success=2 failed=0 skipped=0 retries=0 elapsed={elapsed:.2f}s",
+        f"Final summary | total=3 success=3 failed=0 skipped=0 retries=0 elapsed={elapsed:.2f}s",
         step="summary",
         style="success",
     )
