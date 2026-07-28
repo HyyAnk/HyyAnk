@@ -151,13 +151,14 @@ def render_hero(frame: int, total: int, width: int = 1200, height: int = 480) ->
 
 
 def cubic_point(t: float) -> tuple[float, float]:
-    points = [(100, 154), (245, 38), (360, 38), (470, 154), (570, 270), (700, 270), (800, 154), (930, 38), (1100, 154)]
-    segment = min(1, int(t * 2))
-    local = (t * 2) - segment
-    if segment == 0:
-        p0, p1, p2, p3 = points[0], points[1], points[2], points[3]
-    else:
-        p0, p1, p2, p3 = points[4], points[5], points[6], points[7]
+    segments = [
+        ((100, 154), (205, 35), (320, 35), (430, 116)),
+        ((430, 116), (545, 262), (650, 262), (760, 192)),
+        ((760, 192), (880, 35), (995, 35), (1100, 154)),
+    ]
+    segment = min(2, int(t * 3))
+    local = (t * 3) - segment
+    p0, p1, p2, p3 = segments[segment]
     inv = 1 - local
     x = inv**3 * p0[0] + 3 * inv**2 * local * p1[0] + 3 * inv * local**2 * p2[0] + local**3 * p3[0]
     y = inv**3 * p0[1] + 3 * inv**2 * local * p1[1] + 3 * inv * local**2 * p2[1] + local**3 * p3[1]
@@ -171,7 +172,6 @@ def render_process(frame: int, total: int, width: int = 1200, height: int = 266)
     labels = [(100, 154, "FRAME"), (430, 116, "EXPLORE"), (760, 192, "PROTOTYPE"), (1100, 154, "SHIP")]
     path_points = [cubic_point(i / 80) for i in range(81)]
     draw.line(path_points, fill=(100, 108, 102), width=2)
-    draw.line(path_points[::2], fill=BG, width=1)
     for index, (x, y, label) in enumerate(labels):
         pulse = 1 + 0.25 * math.sin((frame / total) * math.tau * 2 + index)
         radius = int(25 * pulse)
