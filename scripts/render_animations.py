@@ -107,6 +107,92 @@ def draw_grid(draw: ImageDraw.ImageDraw, width: int, height: int, spacing: int =
         draw.line((x, 0, x, height), fill=GRID, width=1)
 
 
+def mangekyou_blade_points(
+    center_x: float,
+    center_y: float,
+    radius: float,
+    rotation: float,
+) -> list[tuple[float, float]]:
+    """Build one curved Itachi-style Mangekyou blade as a polar polygon."""
+    start_radius = radius * 0.12
+    end_radius = radius * 0.88
+    steps = 28
+    outer: list[tuple[float, float]] = []
+    inner: list[tuple[float, float]] = []
+    for index in range(steps + 1):
+        progress = index / steps
+        current_radius = start_radius + (end_radius - start_radius) * progress
+        sweep = progress * 1.02
+        half_width = 0.42 - (0.13 * progress)
+        outer_angle = rotation + sweep + half_width
+        inner_angle = rotation + sweep - half_width
+        outer.append(
+            (
+                center_x + math.cos(outer_angle) * current_radius,
+                center_y + math.sin(outer_angle) * current_radius,
+            )
+        )
+        inner.append(
+            (
+                center_x + math.cos(inner_angle) * current_radius,
+                center_y + math.sin(inner_angle) * current_radius,
+            )
+        )
+    return outer + list(reversed(inner))
+
+
+def draw_mangekyou(
+    draw: ImageDraw.ImageDraw,
+    center_x: int,
+    center_y: int,
+    radius: int,
+    rotation: float,
+    pulse: float,
+) -> None:
+    """Draw a brand-colored three-blade Mangekyou Sharingan motif."""
+    draw.ellipse(
+        (center_x - radius, center_y - radius, center_x + radius, center_y + radius),
+        fill=(17, 22, 19),
+        outline=LIME,
+        width=3,
+    )
+    inner_radius = radius - 13
+    draw.ellipse(
+        (
+            center_x - inner_radius,
+            center_y - inner_radius,
+            center_x + inner_radius,
+            center_y + inner_radius,
+        ),
+        outline=(63, 85, 36),
+        width=1,
+    )
+
+    for blade_index in range(3):
+        blade_rotation = rotation + (blade_index * math.tau / 3)
+        shadow = mangekyou_blade_points(center_x, center_y, radius, blade_rotation + 0.035)
+        blade = mangekyou_blade_points(center_x, center_y, radius, blade_rotation)
+        draw.polygon(shadow, fill=COBALT)
+        draw.polygon(blade, fill=LIME)
+
+    pupil_radius = int(15 + pulse * 2)
+    draw.ellipse(
+        (
+            center_x - pupil_radius,
+            center_y - pupil_radius,
+            center_x + pupil_radius,
+            center_y + pupil_radius,
+        ),
+        fill=BG,
+        outline=PAPER,
+        width=2,
+    )
+    draw.ellipse(
+        (center_x - 5, center_y - 5, center_x + 5, center_y + 5),
+        fill=LIME,
+    )
+
+
 def render_hero(frame: int, total: int, width: int = 1200, height: int = 480) -> Image.Image:
     image = Image.new("RGB", (width, height), BG)
     draw = ImageDraw.Draw(image)
@@ -132,20 +218,15 @@ def render_hero(frame: int, total: int, width: int = 1200, height: int = 480) ->
     draw.line((42, 352, line_end, 352), fill=LIME, width=3)
     draw.line((42, 366, 690, 366), fill=COBALT, width=2)
 
-    orbit_x, orbit_y = 1000, 248
-    draw.ellipse((orbit_x - 105, orbit_y - 105, orbit_x + 105, orbit_y + 105), outline=LIME, width=2)
-    draw.ellipse((orbit_x - 76, orbit_y - 76, orbit_x + 76, orbit_y + 76), outline=(90, 120, 70), width=1)
-    angle = (frame / total) * math.tau
-    dot_x = orbit_x + math.cos(angle) * 105
-    dot_y = orbit_y + math.sin(angle) * 105
-    draw.ellipse((dot_x - 5, dot_y - 5, dot_x + 5, dot_y + 5), fill=LIME)
-    draw.line((orbit_x - 126, orbit_y, orbit_x + 126, orbit_y), fill=(90, 96, 90), width=1)
-    draw.line((orbit_x, orbit_y - 126, orbit_x, orbit_y + 126), fill=(90, 96, 90), width=1)
-    draw.ellipse((orbit_x - 4, orbit_y - 4, orbit_x + 4, orbit_y + 4), fill=LIME)
+    eye_x, eye_y = 1000, 248
+    cycle = frame / total
+    sharingan_rotation = (cycle * math.tau / 3) + (0.055 * math.sin(cycle * math.tau * 3))
+    sharingan_pulse = (math.sin(cycle * math.tau * 2) + 1) / 2
+    draw_mangekyou(draw, eye_x, eye_y, 108, sharingan_rotation, sharingan_pulse)
 
     scan_y = int(((frame * 15) % (height + 36)) - 18)
     draw.rectangle((0, scan_y, width, scan_y + 2), fill=(90, 104, 93))
-    draw.text((895, 421), "KINETIC IDENTITY", fill=MUTED, font=mono)
+    draw.text((886, 421), "MANGEKYOU MOTION", fill=MUTED, font=mono)
     draw.text((42, 422), "PRODUCT / VISUAL / MOTION / CODE", fill=MUTED, font=mono)
     return image
 
