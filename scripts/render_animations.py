@@ -88,12 +88,12 @@ FONT_DISPLAY = font_path("arialbd.ttf", "segoeuib.ttf", "arial.ttf")
 FONT_SANS = font_path("arial.ttf", "segoeui.ttf")
 FONT_MONO = font_path("consola.ttf", "cour.ttf")
 
-BG = (11, 14, 14)
-PAPER = (241, 241, 233)
-MUTED = (215, 219, 212)
-LIME = (199, 255, 26)
-COBALT = (47, 100, 214)
-GRID = (42, 49, 46)
+BG = (8, 10, 13)
+PAPER = (242, 245, 246)
+MUTED = (197, 208, 214)
+RED = (240, 46, 77)
+CYAN = (0, 217, 245)
+GRID = (35, 43, 47)
 
 
 def font(path: str, size: int) -> ImageFont.FreeTypeFont:
@@ -153,7 +153,7 @@ def draw_mangekyou(
     draw.ellipse(
         (center_x - radius, center_y - radius, center_x + radius, center_y + radius),
         fill=(17, 22, 19),
-        outline=LIME,
+        outline=RED,
         width=3,
     )
     inner_radius = radius - 13
@@ -172,8 +172,8 @@ def draw_mangekyou(
         blade_rotation = rotation + (blade_index * math.tau / 3)
         shadow = mangekyou_blade_points(center_x, center_y, radius, blade_rotation + 0.035)
         blade = mangekyou_blade_points(center_x, center_y, radius, blade_rotation)
-        draw.polygon(shadow, fill=COBALT)
-        draw.polygon(blade, fill=LIME)
+        draw.polygon(shadow, fill=CYAN)
+        draw.polygon(blade, fill=RED)
 
     pupil_radius = int(15 + pulse * 2)
     draw.ellipse(
@@ -189,7 +189,7 @@ def draw_mangekyou(
     )
     draw.ellipse(
         (center_x - 5, center_y - 5, center_x + 5, center_y + 5),
-        fill=LIME,
+        fill=RED,
     )
 
 
@@ -203,20 +203,20 @@ def render_hero(frame: int, total: int, width: int = 1200, height: int = 480) ->
     center_x, center_y = 435, 275
 
     draw.text((42, 31), "HYYANK / DESIGN + BUILD", fill=MUTED, font=small, spacing=4)
-    draw.line((40, 54, 510, 54), fill=COBALT, width=2)
+    draw.line((40, 54, 510, 54), fill=CYAN, width=2)
 
     glitch_window = frame in {38, 39, 40}
-    lime_offset = (-7, 2) if glitch_window else (0, 0)
-    blue_offset = (7, -2) if glitch_window else (0, 0)
+    red_offset = (-7, 2) if glitch_window else (0, 0)
+    cyan_offset = (7, -2) if glitch_window else (0, 0)
     kwargs = {"anchor": "mm", "stroke_width": 2}
-    draw.text((center_x + blue_offset[0], center_y + blue_offset[1]), "HyyAnk", fill=BG, stroke_fill=COBALT, font=display, **kwargs)
-    draw.text((center_x + lime_offset[0], center_y + lime_offset[1]), "HyyAnk", fill=BG, stroke_fill=LIME, font=display, **kwargs)
+    draw.text((center_x + cyan_offset[0], center_y + cyan_offset[1]), "HyyAnk", fill=BG, stroke_fill=CYAN, font=display, **kwargs)
+    draw.text((center_x + red_offset[0], center_y + red_offset[1]), "HyyAnk", fill=BG, stroke_fill=RED, font=display, **kwargs)
     draw.text((center_x, center_y), "HyyAnk", fill=PAPER, font=display, **kwargs)
 
     progress = min(1.0, frame / 19)
     line_end = 850 + int(215 * progress)
-    draw.line((42, 352, line_end, 352), fill=LIME, width=3)
-    draw.line((42, 366, 690, 366), fill=COBALT, width=2)
+    draw.line((42, 352, line_end, 352), fill=RED, width=3)
+    draw.line((42, 366, 690, 366), fill=CYAN, width=2)
 
     eye_x, eye_y = 1000, 248
     cycle = frame / total
@@ -256,11 +256,11 @@ def render_process(frame: int, total: int, width: int = 1200, height: int = 266)
     for index, (x, y, label) in enumerate(labels):
         pulse = 1 + 0.25 * math.sin((frame / total) * math.tau * 2 + index)
         radius = int(25 * pulse)
-        draw.ellipse((x - radius, y - radius, x + radius, y + radius), outline=LIME, width=2)
-        draw.rectangle((x - 7, y - 7, x + 7, y + 7), fill=LIME)
+        draw.ellipse((x - radius, y - radius, x + radius, y + radius), outline=RED, width=2)
+        draw.rectangle((x - 7, y - 7, x + 7, y + 7), fill=RED)
         draw.text((x - len(label) * 5.2, y + 44), label, fill=PAPER, font=font(FONT_DISPLAY, 16))
     runner_x, runner_y = cubic_point((frame / total) % 1)
-    draw.ellipse((runner_x - 14, runner_y - 14, runner_x + 14, runner_y + 14), fill=COBALT)
+    draw.ellipse((runner_x - 14, runner_y - 14, runner_x + 14, runner_y + 14), fill=CYAN)
     draw.ellipse((runner_x - 5, runner_y - 5, runner_x + 5, runner_y + 5), fill=PAPER)
     return image
 
@@ -288,16 +288,16 @@ def render_terminal(frame: int, total: int, width: int = 1200, height: int = 400
     meta_font = font(FONT_MONO, 15)
 
     icon_x, icon_y = 143, 88
-    draw.rounded_rectangle((icon_x, icon_y, icon_x + 28, icon_y + 28), radius=4, outline=COBALT, width=2)
-    draw.line((icon_x + 7, icon_y + 9, icon_x + 13, icon_y + 14), fill=LIME, width=2)
-    draw.line((icon_x + 13, icon_y + 14, icon_x + 7, icon_y + 19), fill=LIME, width=2)
+    draw.rounded_rectangle((icon_x, icon_y, icon_x + 28, icon_y + 28), radius=4, outline=CYAN, width=2)
+    draw.line((icon_x + 7, icon_y + 9, icon_x + 13, icon_y + 14), fill=RED, width=2)
+    draw.line((icon_x + 13, icon_y + 14, icon_x + 7, icon_y + 19), fill=RED, width=2)
     draw.line((icon_x + 16, icon_y + 20, icon_x + 22, icon_y + 20), fill=PAPER, width=2)
     draw.text((187, 88), "Terminal", fill=MUTED, font=title_font)
 
     copy_box = (1017, 81, 1063, 120)
     draw.rounded_rectangle(copy_box, radius=7, fill=(35, 40, 38), outline=(120, 128, 123), width=1)
     draw.rounded_rectangle((1030, 90, 1044, 105), radius=2, outline=MUTED, width=2)
-    draw.rounded_rectangle((1036, 96, 1050, 111), radius=2, outline=LIME, width=2)
+    draw.rounded_rectangle((1036, 96, 1050, 111), radius=2, outline=RED, width=2)
 
     command = "npx create-HyyAnk-design"
     type_start = 8
@@ -315,12 +315,12 @@ def render_terminal(frame: int, total: int, width: int = 1200, height: int = 400
         visible_count = max(0, len(command) - int(erase_progress * len(command)))
 
     prompt_x, command_y = 155, 218
-    draw.text((prompt_x, command_y), "~", fill=COBALT, font=command_font, anchor="lm")
+    draw.text((prompt_x, command_y), "~", fill=CYAN, font=command_font, anchor="lm")
     command_x = 202
     visible = command[:visible_count]
     first_token = visible[: min(3, len(visible))]
     rest = visible[3:] if len(visible) > 3 else ""
-    draw.text((command_x, command_y), first_token, fill=LIME, font=command_font, anchor="lm")
+    draw.text((command_x, command_y), first_token, fill=RED, font=command_font, anchor="lm")
     first_width = draw.textlength(first_token, font=command_font)
     draw.text((command_x + first_width, command_y), rest, fill=PAPER, font=command_font, anchor="lm")
     typed_width = draw.textlength(visible, font=command_font)
@@ -328,10 +328,76 @@ def render_terminal(frame: int, total: int, width: int = 1200, height: int = 400
     cursor_visible = (frame // 4) % 2 == 0 or (type_start <= frame <= type_end)
     if cursor_visible:
         cursor_x = command_x + typed_width + 5
-        draw.rectangle((cursor_x, command_y - 23, cursor_x + 4, command_y + 24), fill=LIME)
+        draw.rectangle((cursor_x, command_y - 23, cursor_x + 4, command_y + 24), fill=RED)
 
     draw.text((155, 293), "DESIGN SYSTEM INITIALIZER", fill=(118, 126, 121), font=meta_font)
     draw.text((861, 293), "HYYANK / LOCAL", fill=(118, 126, 121), font=meta_font)
+    return image
+
+
+def rotated_square_points(
+    center_x: float,
+    center_y: float,
+    radius: float,
+    angle: float,
+) -> list[tuple[float, float]]:
+    return [
+        (
+            center_x + math.cos(angle + (index * math.pi / 2)) * radius,
+            center_y + math.sin(angle + (index * math.pi / 2)) * radius,
+        )
+        for index in range(4)
+    ]
+
+
+def render_creative_signal(frame: int, total: int, width: int = 1200, height: int = 330) -> Image.Image:
+    """Render a Novatorem-inspired creative activity card without fake live data."""
+    image = Image.new("RGB", (width, height), BG)
+    draw = ImageDraw.Draw(image)
+    draw_grid(draw, width, height, spacing=94)
+    cycle = frame / total
+
+    card = (42, 34, 1158, 296)
+    draw.rounded_rectangle(card, radius=18, fill=(17, 21, 26), outline=(62, 76, 84), width=2)
+    draw.line((289, 55, 289, 275), fill=(52, 64, 70), width=1)
+
+    art_box = (72, 65, 260, 253)
+    draw.rounded_rectangle(art_box, radius=14, fill=(12, 15, 19), outline=RED, width=2)
+    art_x, art_y = 166, 159
+    art_angle = cycle * math.tau / 4
+    draw.polygon(rotated_square_points(art_x, art_y, 73, art_angle), outline=CYAN, width=3)
+    draw.polygon(rotated_square_points(art_x, art_y, 55, -art_angle * 1.4), outline=RED, width=4)
+    draw.ellipse((art_x - 34, art_y - 34, art_x + 34, art_y + 34), fill=(24, 28, 33), outline=CYAN, width=2)
+    draw.text((art_x, art_y - 3), "HA", fill=PAPER, font=font(FONT_DISPLAY, 32), anchor="mm")
+
+    eyebrow_font = font(FONT_MONO, 14)
+    title_font = font(FONT_DISPLAY, 30)
+    body_font = font(FONT_SANS, 18)
+    draw.text((330, 73), "CREATIVE SIGNAL", fill=RED, font=eyebrow_font)
+    draw.text((330, 104), "HyyAnk / in motion", fill=PAPER, font=title_font)
+    draw.text((330, 144), "Visual systems, interfaces, and creative code.", fill=MUTED, font=body_font)
+
+    bar_count = 34
+    bar_width = 12
+    gap = 9
+    start_x = 330
+    baseline = 247
+    for index in range(bar_count):
+        phase = (cycle * math.tau * 3.2) + (index * 0.71)
+        secondary = (cycle * math.tau * 1.7) - (index * 0.29)
+        energy = 0.52 + (0.31 * math.sin(phase)) + (0.17 * math.sin(secondary))
+        energy = max(0.12, min(1.0, energy))
+        envelope = 0.55 + (0.45 * math.sin((index / (bar_count - 1)) * math.pi))
+        bar_height = int(18 + (70 * energy * envelope))
+        x = start_x + index * (bar_width + gap)
+        color = CYAN if index % 6 in {0, 1} else RED
+        draw.rounded_rectangle(
+            (x, baseline - bar_height, x + bar_width, baseline),
+            radius=5,
+            fill=color,
+        )
+
+    draw.text((967, 73), "NOW CREATING", fill=CYAN, font=eyebrow_font)
     return image
 
 
@@ -385,6 +451,7 @@ def main() -> int:
             render_asset("hero-wordmark", 48, render_hero, args.output_dir / "hyyank-hero.gif", progress)
             render_asset("design-process", 48, render_process, args.output_dir / "design-process.gif", progress)
             render_asset("terminal-typing", 64, render_terminal, args.output_dir / "hyyank-terminal.gif", progress)
+            render_asset("creative-signal", 72, render_creative_signal, args.output_dir / "creative-signal.gif", progress)
     except Exception as exc:
         log(
             "ERROR",
@@ -397,7 +464,7 @@ def main() -> int:
     elapsed = time.perf_counter() - started
     log(
         "DONE",
-        f"Final summary | total=3 success=3 failed=0 skipped=0 retries=0 elapsed={elapsed:.2f}s",
+        f"Final summary | total=4 success=4 failed=0 skipped=0 retries=0 elapsed={elapsed:.2f}s",
         step="summary",
         style="success",
     )

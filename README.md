@@ -5,9 +5,9 @@
 <br>
 
 <div align="center">
-  <a href="#selected-work"><img src="https://img.shields.io/badge/SELECTED_WORK-c7ff1a?style=for-the-badge&labelColor=0b0e0e&color=c7ff1a" alt="Selected work" /></a>
-  <a href="https://x.com/0x_HyyAnk"><img src="https://img.shields.io/badge/X_@0x__HyyAnk-f1f1e9?style=for-the-badge&logo=x&logoColor=0b0e0e&labelColor=f1f1e9&color=f1f1e9" alt="Follow HyyAnk on X" /></a>
-  <a href="https://github.com/HyyAnk?tab=repositories"><img src="https://img.shields.io/badge/ALL_REPOS-2f64d6?style=for-the-badge&logo=github&logoColor=f1f1e9&labelColor=2f64d6&color=2f64d6" alt="View all repositories" /></a>
+  <a href="#selected-work"><img src="https://img.shields.io/badge/SELECTED_WORK-f02e4d?style=for-the-badge&labelColor=080a0d&color=f02e4d" alt="Selected work" /></a>
+  <a href="https://x.com/0x_HyyAnk"><img src="https://img.shields.io/badge/X_@0x__HyyAnk-00d9f5?style=for-the-badge&logo=x&logoColor=080a0d&labelColor=00d9f5&color=00d9f5" alt="Follow HyyAnk on X" /></a>
+  <a href="https://github.com/HyyAnk?tab=repositories"><img src="https://img.shields.io/badge/ALL_REPOS-f2f5f6?style=for-the-badge&logo=github&logoColor=080a0d&labelColor=f2f5f6&color=f2f5f6" alt="View all repositories" /></a>
 </div>
 
 <br>
@@ -85,20 +85,15 @@ I am most interested in creative tools, AI-assisted media workflows, browser-nat
 
 <br>
 
+## Creative signal
+
+<img src="./assets/creative-signal.gif" width="100%" alt="Animated HyyAnk creative signal with red and cyan audio bars" />
+
+<br>
+
 ## Creative pulse
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=HyyAnk&bg_color=0b0e0e&color=d7dbd4&line=c7ff1a&point=2f64d6&area=true&area_color=465a22&hide_border=true&custom_title=CREATIVE%20PULSE" width="100%" alt="HyyAnk GitHub activity graph" />
-
-<table>
-  <tr>
-    <td width="58%" valign="top">
-      <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=HyyAnk&theme=github_dark" width="100%" alt="HyyAnk GitHub statistics" />
-    </td>
-    <td width="42%" valign="top">
-      <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=HyyAnk&theme=github_dark" width="100%" alt="Languages used across HyyAnk repositories" />
-    </td>
-  </tr>
-</table>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=HyyAnk&bg_color=080a0d&color=c5d0d6&line=f02e4d&point=00d9f5&area=true&area_color=481722&hide_border=true&custom_title=CREATIVE%20PULSE" width="100%" alt="HyyAnk GitHub activity graph" />
 
 <br>
 
