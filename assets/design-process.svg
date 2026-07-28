@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 310" role="img" aria-labelledby="title desc">
+  <title id="title">Design process</title>
+  <desc id="desc">An animated route connecting frame, explore, prototype, and ship.</desc>
+  <style>
+    .runner {
+      offset-path: path("M125 170 C290 55 430 55 555 170 S820 285 970 170 S1190 55 1300 170");
+      animation: journey 8s cubic-bezier(.65,0,.35,1) infinite;
+    }
+    .pulse { animation: pulse 2.4s ease-in-out infinite; }
+    .pulse:nth-of-type(2) { animation-delay: .6s; }
+    .pulse:nth-of-type(3) { animation-delay: 1.2s; }
+    .pulse:nth-of-type(4) { animation-delay: 1.8s; }
+    @keyframes journey { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+    @keyframes pulse { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .runner, .pulse { animation: none !important; }
+    }
+  </style>
+
+  <rect width="1400" height="310" fill="#0b0e0e" />
+  <path d="M125 170 C290 55 430 55 555 170 S820 285 970 170 S1190 55 1300 170"
+        fill="none" stroke="#68706c" stroke-width="2" stroke-dasharray="6 12" />
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#f1f1e9">
+    <g transform="translate(125 170)">
+      <circle class="pulse" r="28" fill="none" stroke="#c7ff1a" stroke-width="2" />
+      <rect x="-8" y="-8" width="16" height="16" fill="#c7ff1a" />
+      <text x="-56" y="68">FRAME</text>
+    </g>
+    <g transform="translate(500 125)">
+      <circle class="pulse" r="28" fill="none" stroke="#c7ff1a" stroke-width="2" />
+      <rect x="-8" y="-8" width="16" height="16" fill="#c7ff1a" />
+      <text x="-64" y="68">EXPLORE</text>
+    </g>
+    <g transform="translate(890 217)">
+      <circle class="pulse" r="28" fill="none" stroke="#c7ff1a" stroke-width="2" />
+      <rect x="-8" y="-8" width="16" height="16" fill="#c7ff1a" />
+      <text x="-88" y="68">PROTOTYPE</text>
+    </g>
+    <g transform="translate(1300 170)">
+      <circle class="pulse" r="28" fill="none" stroke="#c7ff1a" stroke-width="2" />
+      <rect x="-8" y="-8" width="16" height="16" fill="#c7ff1a" />
+      <text x="-34" y="68">SHIP</text>
+    </g>
+  </g>
+
+  <g class="runner">
+    <circle r="15" fill="#2f64d6" />
+    <circle r="6" fill="#f1f1e9" />
+  </g>
+</svg>

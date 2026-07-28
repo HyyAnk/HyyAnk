@@ -42,3 +42,9 @@ For each pinned repository, add:
 - Consistent repository topics such as `product-design`, `creative-tools`, `react`, and `typescript`
 
 The cover image matters more than additional badges or GitHub statistics. A recruiter should understand the product and your role before reading implementation details.
+
+## Animation setup
+
+The profile README uses `hyyank-hero.gif` for the coded wordmark and `design-process.gif` for the process diagram. GitHub renders animated GIFs in README images, while SVG files are kept as editable source art direction.
+
+The repository also includes `.github/workflows/snake.yml`. It runs on pushes to `main`, on a daily schedule, or manually from the Actions tab and publishes the contribution animation to the `output` branch. If the snake is not visible immediately after the first push, open **Actions**, run **Generate contribution animation**, then refresh the profile.

@@ -1,76 +1,115 @@
-<img src="./assets/profile-hero.png" alt="Editorial design workspace with layout paper, acrylic, metal, and an acid-green accent" width="100%" />
+<div align="center">
+  <img src="./assets/hyyank-hero.gif" width="100%" alt="Animated HyyAnk kinetic wordmark" />
+</div>
 
 <br>
 
-<sub>HOÀNG ANH / DESIGNER + MAKER</sub>
-
-# I design clear interfaces and useful digital products.
-
-I work across product thinking, visual direction, and high-fidelity prototypes. Code is part of my design process: it helps me test ideas, understand constraints, and bring the final experience closer to the original intent.
-
-[View selected work](#selected-work) &nbsp;/&nbsp; [Follow on X](https://x.com/0x_HyyAnk)
+<div align="center">
+  <a href="#selected-work"><img src="https://img.shields.io/badge/SELECTED_WORK-c7ff1a?style=for-the-badge&labelColor=0b0e0e&color=c7ff1a" alt="Selected work" /></a>
+  <a href="https://x.com/0x_HyyAnk"><img src="https://img.shields.io/badge/X_@0x__HyyAnk-f1f1e9?style=for-the-badge&logo=x&logoColor=0b0e0e&labelColor=f1f1e9&color=f1f1e9" alt="Follow HyyAnk on X" /></a>
+  <a href="https://github.com/HyyAnk?tab=repositories"><img src="https://img.shields.io/badge/ALL_REPOS-2f64d6?style=for-the-badge&logo=github&logoColor=f1f1e9&labelColor=2f64d6&color=2f64d6" alt="View all repositories" /></a>
+</div>
 
 <br>
 
-## Design practice
+## I design systems that move.
 
-**Product and interface**<br>
-Turning complex workflows into focused flows, clear hierarchy, and usable screens.
+I am Hoàng Anh, a designer and maker working across product interfaces, visual systems, creative tools, and high-fidelity prototypes. I use code to push ideas beyond static frames and test how a design behaves in the real world.
 
-**Visual systems**<br>
-Building consistent typography, layout, color, and component decisions that scale beyond one screen.
-
-**Prototype and build**<br>
-Using React, TypeScript, and browser APIs to turn static concepts into working product experiments.
+```text
+PRODUCT THINKING  +  VISUAL DIRECTION  +  INTERACTION  +  PROTOTYPING
+```
 
 <br>
 
 ## Selected work
 
+<a href="https://github.com/HyyAnk/Merge-Board-Node">
+  <img src="./assets/mergeboard-cover-wide.webp" width="100%" alt="MergeBoard visual workspace project cover" />
+</a>
+
 ### [MergeBoard](https://github.com/HyyAnk/Merge-Board-Node)
 
-A local-first visual workspace for organizing images and text. Designed around a portable folder structure, bilingual UI, and a privacy-first browser workflow.
+A local-first visual workspace for organizing images and text. The product combines a portable folder structure, bilingual interface, and privacy-first browser workflow.
 
-`Product design` `Local-first UX` `React` `File System Access API`
-
-### [Photo ID Studio](https://github.com/HyyAnk/Photo-ID-Studio)
-
-A focused studio tool for preparing photo ID assets. An exploration of guided workflows, precise output, and practical visual tooling.
-
-`Interface design` `Creative tooling` `JavaScript`
-
-### [PDF Business Card Stamper](https://github.com/HyyAnk/Pdf-business-card-stamper)
-
-A production utility for placing business-card content into PDF workflows. Built to make a repetitive print task faster and more consistent.
-
-`Workflow design` `Print automation` `TypeScript`
-
-### [AI Media Studio](https://github.com/HyyAnk/Image-video-Google-API---Aistudio)
-
-An interface experiment for generating images and video with Google's media APIs.
-
-`AI interaction` `Rapid prototyping` `TypeScript`
+`PRODUCT DESIGN` `LOCAL-FIRST UX` `REACT` `BROWSER API`
 
 <br>
 
-## How I work
-
-I start with the job a screen needs to do, reduce friction in the flow, then refine the visual system until every decision feels intentional. I like prototypes that are close enough to reality to expose the right problems early.
-
-Currently exploring creative tools, AI-assisted media workflows, and small products where design and engineering meet.
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://github.com/HyyAnk/Photo-ID-Studio">
+        <img src="./assets/photo-id-cover-wide.webp" width="100%" alt="Photo ID Studio precision crop project cover" />
+      </a>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://github.com/HyyAnk/Pdf-business-card-stamper">
+        <img src="./assets/pdf-stamper-cover-wide.webp" width="100%" alt="PDF Business Card Stamper print workflow project cover" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/HyyAnk/Photo-ID-Studio">Photo ID Studio</a></h3>
+      <p>A focused creative tool for precise photo preparation, guided cropping, and practical output.</p>
+      <code>INTERFACE DESIGN</code> <code>CREATIVE TOOLING</code>
+    </td>
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/HyyAnk/Pdf-business-card-stamper">PDF Business Card Stamper</a></h3>
+      <p>A print-production utility designed to make repetitive business-card placement faster and more consistent.</p>
+      <code>WORKFLOW DESIGN</code> <code>PRINT AUTOMATION</code>
+    </td>
+  </tr>
+</table>
 
 <br>
 
-## Beyond the canvas
+## The design loop
 
-```text
-Design     Product thinking / Interaction / Visual systems / Prototyping
-Build      TypeScript / JavaScript / React / Node.js / Python
-Based in   Vietnam
-```
+<img src="./assets/design-process.gif" width="100%" alt="Animated design process from frame to explore, prototype, and ship" />
+
+The loop is deliberately non-linear. Framing sets direction, exploration creates options, and working prototypes reveal what static screens cannot.
 
 <br>
 
-If you are working on a useful digital product, I would be happy to hear about it.
+## Creative technology
 
-[Start a conversation](https://x.com/0x_HyyAnk)
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=ts,js,react,nodejs,python,git,github&theme=dark&perline=7" alt="TypeScript, JavaScript, React, Node.js, Python, Git, and GitHub" />
+</div>
+
+<br>
+
+I am most interested in creative tools, AI-assisted media workflows, browser-native experiences, and small products where design and engineering shape each other.
+
+<br>
+
+## Creative pulse
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=HyyAnk&bg_color=0b0e0e&color=d7dbd4&line=c7ff1a&point=2f64d6&area=true&area_color=465a22&hide_border=true&custom_title=CREATIVE%20PULSE" width="100%" alt="HyyAnk GitHub activity graph" />
+
+<table>
+  <tr>
+    <td width="58%" valign="top">
+      <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=HyyAnk&theme=github_dark" width="100%" alt="HyyAnk GitHub statistics" />
+    </td>
+    <td width="42%" valign="top">
+      <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=HyyAnk&theme=github_dark" width="100%" alt="Languages used across HyyAnk repositories" />
+    </td>
+  </tr>
+</table>
+
+<br>
+
+## Contributions in motion
+
+<img src="https://raw.githubusercontent.com/HyyAnk/HyyAnk/output/github-contribution-grid-snake.svg" width="100%" alt="Animated contribution graph" />
+
+<br>
+
+## Design, then make it real.
+
+Good design is not decoration added at the end. It is the structure, behavior, rhythm, and decisions that make a product understandable.
+
+If you are building a useful digital product, [start a conversation](https://x.com/0x_HyyAnk).

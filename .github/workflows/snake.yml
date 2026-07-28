@@ -1,0 +1,52 @@
+name: Generate contribution animation
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "17 2 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Startup summary
+        shell: bash
+        run: |
+          echo "RUN_STARTED_AT=$(date +%s)" >> "$GITHUB_ENV"
+          printf '\033[2m%s\033[0m \033[36m[INFO]\033[0m [T:github-actions] [P:${{ github.repository_owner }}] [STEP:startup] mode=scheduled-or-manual concurrency=1 automation=GitHub-Actions-CDP-free profiles=1\n' "$(date -u +%H:%M:%S)"
+
+      - name: Generate snake SVG
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-contribution-grid-snake.svg?color_snake=%23c7ff1a&color_dots=%230b0e0e,%23252b29,%23434b47,%23798542,%23c7ff1a
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish output branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Final summary
+        if: always()
+        shell: bash
+        run: |
+          elapsed="$(( $(date +%s) - RUN_STARTED_AT ))s"
+          if [ "${{ job.status }}" = "success" ]; then
+            printf '\033[2m%s\033[0m \033[32m[OK]\033[0m [T:github-actions] [P:${{ github.repository_owner }}] [STEP:summary] total=1 success=1 failed=0 skipped=0 retries=0 elapsed=%s status=%s\n' "$(date -u +%H:%M:%S)" "$elapsed" "${{ job.status }}"
+          else
+            printf '\033[2m%s\033[0m \033[1;31m[ERROR]\033[0m [T:github-actions] [P:${{ github.repository_owner }}] [STEP:summary] total=1 success=0 failed=1 skipped=0 retries=0 elapsed=%s status=%s next=review-action-logs\n' "$(date -u +%H:%M:%S)" "$elapsed" "${{ job.status }}"
+          fi
