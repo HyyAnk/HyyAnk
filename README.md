@@ -87,7 +87,7 @@ I am most interested in creative tools, AI-assisted media workflows, browser-nat
 
 ## Creative signal
 
-<img src="./assets/creative-signal.gif" width="100%" alt="Animated HyyAnk creative signal with red and cyan audio bars" />
+<img src="https://raw.githubusercontent.com/HyyAnk/HyyAnk/main/assets/creative-signal.svg?v=1" width="100%" alt="Animated creative signal showing Eternity by HyyAnk at 128 BPM" />
 
 <br>
 

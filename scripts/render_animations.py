@@ -335,72 +335,6 @@ def render_terminal(frame: int, total: int, width: int = 1200, height: int = 400
     return image
 
 
-def rotated_square_points(
-    center_x: float,
-    center_y: float,
-    radius: float,
-    angle: float,
-) -> list[tuple[float, float]]:
-    return [
-        (
-            center_x + math.cos(angle + (index * math.pi / 2)) * radius,
-            center_y + math.sin(angle + (index * math.pi / 2)) * radius,
-        )
-        for index in range(4)
-    ]
-
-
-def render_creative_signal(frame: int, total: int, width: int = 1200, height: int = 330) -> Image.Image:
-    """Render a Novatorem-inspired creative activity card without fake live data."""
-    image = Image.new("RGB", (width, height), BG)
-    draw = ImageDraw.Draw(image)
-    draw_grid(draw, width, height, spacing=94)
-    cycle = frame / total
-
-    card = (42, 34, 1158, 296)
-    draw.rounded_rectangle(card, radius=18, fill=(17, 21, 26), outline=(62, 76, 84), width=2)
-    draw.line((289, 55, 289, 275), fill=(52, 64, 70), width=1)
-
-    art_box = (72, 65, 260, 253)
-    draw.rounded_rectangle(art_box, radius=14, fill=(12, 15, 19), outline=RED, width=2)
-    art_x, art_y = 166, 159
-    art_angle = cycle * math.tau / 4
-    draw.polygon(rotated_square_points(art_x, art_y, 73, art_angle), outline=CYAN, width=3)
-    draw.polygon(rotated_square_points(art_x, art_y, 55, -art_angle * 1.4), outline=RED, width=4)
-    draw.ellipse((art_x - 34, art_y - 34, art_x + 34, art_y + 34), fill=(24, 28, 33), outline=CYAN, width=2)
-    draw.text((art_x, art_y - 3), "HA", fill=PAPER, font=font(FONT_DISPLAY, 32), anchor="mm")
-
-    eyebrow_font = font(FONT_MONO, 14)
-    title_font = font(FONT_DISPLAY, 30)
-    body_font = font(FONT_SANS, 18)
-    draw.text((330, 73), "CREATIVE SIGNAL", fill=RED, font=eyebrow_font)
-    draw.text((330, 104), "HyyAnk / in motion", fill=PAPER, font=title_font)
-    draw.text((330, 144), "Visual systems, interfaces, and creative code.", fill=MUTED, font=body_font)
-
-    bar_count = 34
-    bar_width = 12
-    gap = 9
-    start_x = 330
-    baseline = 247
-    for index in range(bar_count):
-        phase = (cycle * math.tau * 3.2) + (index * 0.71)
-        secondary = (cycle * math.tau * 1.7) - (index * 0.29)
-        energy = 0.52 + (0.31 * math.sin(phase)) + (0.17 * math.sin(secondary))
-        energy = max(0.12, min(1.0, energy))
-        envelope = 0.55 + (0.45 * math.sin((index / (bar_count - 1)) * math.pi))
-        bar_height = int(18 + (70 * energy * envelope))
-        x = start_x + index * (bar_width + gap)
-        color = CYAN if index % 6 in {0, 1} else RED
-        draw.rounded_rectangle(
-            (x, baseline - bar_height, x + bar_width, baseline),
-            radius=5,
-            fill=color,
-        )
-
-    draw.text((967, 73), "NOW CREATING", fill=CYAN, font=eyebrow_font)
-    return image
-
-
 def save_gif(frames: list[Image.Image], path: Path, duration: int) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     quantized = [frame.quantize(colors=64, method=Image.Quantize.MEDIANCUT) for frame in frames]
@@ -451,7 +385,6 @@ def main() -> int:
             render_asset("hero-wordmark", 48, render_hero, args.output_dir / "hyyank-hero.gif", progress)
             render_asset("design-process", 48, render_process, args.output_dir / "design-process.gif", progress)
             render_asset("terminal-typing", 64, render_terminal, args.output_dir / "hyyank-terminal.gif", progress)
-            render_asset("creative-signal", 72, render_creative_signal, args.output_dir / "creative-signal.gif", progress)
     except Exception as exc:
         log(
             "ERROR",
@@ -464,7 +397,7 @@ def main() -> int:
     elapsed = time.perf_counter() - started
     log(
         "DONE",
-        f"Final summary | total=4 success=4 failed=0 skipped=0 retries=0 elapsed={elapsed:.2f}s",
+        f"Final summary | total=3 success=3 failed=0 skipped=0 retries=0 elapsed={elapsed:.2f}s",
         step="summary",
         style="success",
     )
